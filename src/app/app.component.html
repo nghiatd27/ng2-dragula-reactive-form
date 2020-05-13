@@ -1,0 +1,21 @@
+<h3><code>ng2-dragula</code></h3>
+
+<!-- these are some basics to get you started -- modify as you see fit. -->
+
+<div class="flex">
+  <div class="container" >
+    <form [formGroup]="form" dragula="VAMPIRES" [dragulaModel]="rows.controls">
+      <ng-container formArrayName="rows">
+        <div class="vamp" *ngFor="let row of rows.controls; let i = index" [formGroupName]="i">
+          <span style="margin-right: 5px">Row {{i + 1}}: </span>
+          <input type="text" formControlName="data" >
+        </div>
+      </ng-container>
+    </form>
+    <button (click)="addRow()">Add row</button>
+    <button>Submit</button>
+  </div>
+</div>
+<p>
+Result: {{form.value | json}}
+</p>
